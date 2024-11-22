@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Trainer } from './Trainer';
+import { TrainerDetail } from './trainer-detail';
 
 @Injectable({
   providedIn: 'root',
@@ -11,13 +12,11 @@ export class TrainerService {
 
   constructor(private http: HttpClient) {}
 
-
   getListTrainer(): Observable<Trainer[]> {
     return this.http.get<Trainer[]>(`${this.apiUrl}trainers.json`);
   }
 
-
-  getDetailTrainer(id: string): Observable<Trainer> {
-    return this.http.get<Trainer>(`${this.apiUrl}${id}/trainers.json`);
+  getDetailTrainer(id: string): Observable<TrainerDetail> {
+    return this.http.get<TrainerDetail>(`${this.apiUrl}${id}/trainers.json`);
   }
 }
